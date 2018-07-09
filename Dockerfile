@@ -20,7 +20,3 @@ RUN bundle
 RUN npm install -g yarn
 COPY . /myapp
 RUN yarn install
-# # Note this is for development only, Running in production might be different run.sh
-# COPY docker-entrypoint.sh /usr/local/bin/
-# RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
-# ENTRYPOINT ["docker-entrypoint.sh"]
