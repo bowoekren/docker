@@ -6,6 +6,7 @@ RUN apk add --no-cache \
     postgresql-dev \
     nodejs \
     sqlite-dev \
+    git \
     && apk add --update less \
     && gem install nokogiri \
     && gem update --system \
