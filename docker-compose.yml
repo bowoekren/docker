@@ -1,6 +1,6 @@
 version: '3'
 services:
-  app:
+  okadoc-pro:
     build: .
     ports:
      - "3000:3000"
@@ -10,12 +10,20 @@ services:
     entrypoint: ./docker-entrypoint.sh
     working_dir: /myapp
     environment:
-     ## Infra Env
+     ############
+     ## Infra ENV
+     ###########
      - POSTGRES_USER=bowo
      - POSTGRES_PASSWORD=password
      - POSTGRES_HOST=postgres
      - REDIS_URL=redis://redis:6379/15
+
+     ## Cache Bundle Install
+     - BUNDLE_PATH=/bundle_data
+     - BUNDLE_BIN=/bundle_data/bin
+     - GEM_HOME=/bundle_data
     volumes:
+      - bundle_data:/bundle_data
       - .:/myapp
   redis:
     image: "redis:3.2.11-alpine"
@@ -31,3 +39,4 @@ services:
 
 volumes:
   postgres_data:
+  bundle_data:
